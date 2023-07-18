@@ -12,6 +12,8 @@ describe('CountSevens', () => {
     { input: 7777777777, output: 10 },
     { input: 1111111111, output: 0 },
     { input: 7897897897, output: 4 },
+    { input: 77_777_777_777_777_777_777, output: 16 }, // lack of precision turn this into 77,777,777,777,777,770,000
+    { input: 77_777_777_777_777_777_777n, output: 20 }
   ];
 
   examples.forEach((example) => {
@@ -51,6 +53,9 @@ describe('CalculateLuckyLevels', () => {
     { input: 77777, luckyDigit: 77777, luckyNumber: 77777, luckyPayout: 77777 },
     { input: 799999, luckyDigit: 799999, luckyNumber: 800077, luckyPayout: 807777 },
     { input: 999999, luckyDigit: 1000007, luckyNumber: 1000077, luckyPayout: 1007777 },
+    // test inputs that are too large for precision
+    { input: Number.MAX_SAFE_INTEGER, luckyDigit: Number.MAX_SAFE_INTEGER, luckyNumber: Number.MAX_SAFE_INTEGER, luckyPayout: Number.MAX_SAFE_INTEGER + 86 },
+    { input: 12345678901234567890, luckyDigit: 12345678901234567890, luckyNumber: 12345678901234567890, luckyPayout: 12345678901234567890 }
   ];
 
   examples.forEach((example) => {
